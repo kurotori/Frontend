@@ -1,0 +1,49 @@
+body, html{
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+}
+
+.fila{
+    position: relative;
+    width: 100%;
+}
+
+.columna {
+    position: relative;
+    height: 100%;
+}
+
+.ancho_020 { width: 20%; }
+.ancho_060 { width: 60%; }
+.altura_020 { height: 20%; }
+.altura_060 { height: 60%; }
+.altura_1_3 { height: calc(100%/3); }
+
+.fondo_rojoClaro { background-color: salmon; }
+.fondo_azulClaro { background-color: lightblue; }
+.fondo_verdeClaro { background-color: lightgreen;}
+.fondo_grisClaro { background-color: lightgray; }
+
+.esCuadrado { aspect-ratio: 1 / 1; }
+.margen_5px { margin: 5px; }
+
+#principal{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#contenido{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    overflow-y: scroll;
+    min-width: 300px;
+    max-width: 600px;
+}
+

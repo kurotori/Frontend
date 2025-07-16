@@ -1,0 +1,49 @@
+html, body{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+}
+
+.fila{
+    position: relative;
+    width: 100%;
+}
+
+.columna {
+    position: relative;
+    height: 100%;
+    float: left;
+}
+
+.altura_020 { height: 20%; }
+.altura_060 { height: 60%; }
+.altura_1_3 { height: calc( 100% /3 ); }
+
+.ancho_020 { width: 20%; }
+.ancho_060 { width: 60%; }
+
+.esCuadrado { aspect-ratio: 1 / 1; }
+
+.fondo_verdeClaro { background-color: lightgreen; }
+.fondo_rojoClaro { background-color: lightcoral; }
+.fondo_azulClaro { background-color: lightblue; }
+
+.margen_5px { margin: 5px; }
+
+#principal {
+    display: flex;
+    flex-direction: row;  /* Dirección de los elementos*/
+    justify-content: center; /* Alineación de elementos en la dimensión del flex */
+    align-items: center; /* Alineación de elementos en la OTRA dimensión */ 
+}
+
+#contenido{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    overflow-y: scroll;
+    min-width: 250px;
+    max-width: 600px;
+}

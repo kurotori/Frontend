@@ -35,7 +35,7 @@
 
 
 
-<style scoped lang="css">
+<style scoped lang="">
 
   .contador{
     width: 100vw;

@@ -1,15 +1,16 @@
 <script setup>
   import { ref } from 'vue'; //Agrega reactividad
-  import Nota from './components/Nota.vue';
   
   const verTelon = ref(false) //Control del DIV 'telon'
   const notas = ref([]) //Array para almacenar las notas
+  const tituloNota = ref("")
   const textoNota = ref("") //Auxiliar para el texto de la nota
 
   const agregarNota = ()=>{
     const nota = {
+      titulo: tituloNota.value,
       texto: textoNota.value,
-      fecha: new Date(),
+      fecha: new Date().toLocaleString(),
       id: crypto.randomUUID()
     }
     notas.value.push(nota)
@@ -29,14 +30,18 @@
           flex justify-center items-center">
 
     <div class="nuevaNota
-            w-1/3 h-1/3
+            w-1/3 h-2/5
             bg-amber-100
             rounded-2xl
             flex justify-center flex-col
             p-2.5
             ">
-            
-      <textarea v-model="textoNota" rows="4" class="texto
+      <input type="text" v-model="tituloNota" 
+              class="titulo
+                bg-white
+                mb-1.5">
+      <textarea v-model="textoNota" rows="4" 
+                        class="texto
                           bg-white
                           rounded-sm">
       </textarea>
@@ -95,18 +100,19 @@
             w-full h-[80vh]
             p-9
             flex justify-around">
-      <Nota v-for="nota in notas" :nota="nota" 
-            :key="nota.id" >
-
-      </Nota>
-      <!-- <div v-for="nota in notas"
+      <div v-for="nota in notas"
             :id="nota.id"
+            :key="nota.id"
             class="nota
               w-[250px] h-[280px]
               bg-amber-300
               flex flex-col justify-between
               p-3.5
               ">
+        <p class="titulo
+            font-bold">
+            {{ nota.titulo }}
+        </p>
         <p class="texto
             text-justify">
           {{ nota.texto }}
@@ -115,7 +121,7 @@
           {{ nota.fecha }}
         </p>
 
-      </div> -->
+      </div>
       
     </div>
   </div>

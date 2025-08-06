@@ -1,11 +1,16 @@
 <script setup>
-  import { ref } from 'vue'; //Agrega reactividad
+  import { ref, watch } from 'vue'; //Agrega reactividad
   
   const verTelon = ref(false) //Control del DIV 'telon'
   const notas = ref([]) //Array para almacenar las notas
   const tituloNota = ref("")
   const textoNota = ref("") //Auxiliar para el texto de la nota
+  const busqueda = ref()
 
+
+  /**
+   * Permite agregar una nota al array.
+   */
   const agregarNota = ()=>{
     const nota = {
       titulo: tituloNota.value,
@@ -17,7 +22,15 @@
     alert("Tu nota se ha creado con éxito")
     verTelon.value = false
     textoNota.value = ""
+    tituloNota.value = ""
   }
+
+  watch(busqueda, ()=>{
+    notas.value = notas.value.filter(
+      nota => nota.titulo.toLowerCase().includes(busqueda.value.toLowerCase())
+    )
+  })
+
 
 </script>
 
@@ -82,7 +95,13 @@
             font-bold">
         Notas:
       </h1>
-
+      
+      <input type="text" v-model.trim="busqueda" 
+          placeholder="Buscar notas..."
+          class="
+            w-1/3 h-1/2
+            border-b-1">
+      
       <button @click=" verTelon = true " class="
                 w-[70px] h-[70px]
                 bg-blue-900

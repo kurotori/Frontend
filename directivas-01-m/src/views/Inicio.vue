@@ -6,18 +6,14 @@
   const almacenNotas = usarAlmacenNotas()
   
   const verTelon = ref(false) //Control del DIV 'telon'
-  const notas = ref([]) //Array para almacenar las notas
+  
+  //const notas = ref([]) //Array para almacenar las notas
   
   const nNota = reactive({}) //Auxiliar para la nota 
 
   const agregarNota = ()=>{
-    const nota = {
-      texto: nNota.texto,
-      titulo: nNota.titulo,
-      fecha: new Date().toLocaleString(),
-      id: crypto.randomUUID()
-    }
-    notas.value.push(nota)
+        
+    almacenNotas.agregarNota(nNota.texto,nNota.titulo)
     alert("Tu nota se ha creado con éxito")
     verTelon.value = false
     nNota.texto = ""
@@ -114,7 +110,7 @@
             w-full h-[80vh]
             p-9
             flex justify-around">
-      <Nota v-for="nota in notas" :nota="nota" 
+      <Nota v-for="nota in almacenNotas.notas" :nota="nota" 
             :key="nota.id" >
 
       </Nota>

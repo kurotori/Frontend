@@ -1,23 +1,38 @@
 <script setup>
-  import { ref } from 'vue'; //Agrega reactividad
-  import Nota from './components/Nota.vue';
+  import { ref,reactive } from 'vue'; //Agrega reactividad
+  import Nota from '../components/Nota.vue'
+  
+  import { usarAlmacenNotas } from '../store/notas';
+  const almacenNotas = usarAlmacenNotas()
   
   const verTelon = ref(false) //Control del DIV 'telon'
   const notas = ref([]) //Array para almacenar las notas
-  const textoNota = ref("") //Auxiliar para el texto de la nota
+  
+  const nNota = reactive({}) //Auxiliar para la nota 
 
   const agregarNota = ()=>{
     const nota = {
-      texto: textoNota.value,
-      fecha: new Date(),
+      texto: nNota.texto,
+      titulo: nNota.titulo,
+      fecha: new Date().toLocaleString(),
       id: crypto.randomUUID()
     }
     notas.value.push(nota)
     alert("Tu nota se ha creado con éxito")
     verTelon.value = false
-    textoNota.value = ""
+    nNota.texto = ""
+    nNota.titulo = ""
   }
 
+</script>
+<script>
+  export default {
+    data(){
+      return {
+        algo:null
+      }
+    }
+  }
 </script>
 
 <template>
@@ -29,15 +44,19 @@
           flex justify-center items-center">
 
     <div class="nuevaNota
-            w-1/3 h-1/3
+            w-1/3 h-7/20
             bg-amber-100
             rounded-2xl
             flex justify-center flex-col
             p-2.5
             ">
-            
-      <textarea v-model="textoNota" rows="4" class="texto
+      <input type="text" v-model="nNota.titulo" 
+        class="titulo
+          bg-white
+          border-2 border-gray-400">
+      <textarea v-model="nNota.texto" rows="4" class="texto
                           bg-white
+                          border-2 border-gray-400
                           rounded-sm">
       </textarea>
       <button @click="agregarNota()" class="btnAgregarNota

@@ -7,5 +7,5 @@
 6. Declarar reglas de ruteo en **src/router/index.js**
 7. Modificar **src/main.js**
 8. Agregar el **RouterView** en **App.vue** e incluirlo
-9. Crear el componente de navegación **src/components/BarraNav.vue** (puede tener otro nombre, obviamente)
+9. *(**OPCIONAL**)* Crear el componente de navegación **src/components/BarraNav.vue** (puede tener otro nombre, obviamente)
 10. Añadirle **RouterLink** al componente de navegación del paso anterior, crear los links, e incluirlo en **App.vue**

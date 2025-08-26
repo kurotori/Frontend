@@ -5,4 +5,4 @@
 3. Crear el almacén de datos en el directorio **src/store/notas.js** y configurarlo:
    - Crear el objeto **useAlmacen** (el "use..." es por convención) con la función **_defineStore()_**
    - Debe incluirse en la definición del almacén:
-4.
+4. Bla bla bla

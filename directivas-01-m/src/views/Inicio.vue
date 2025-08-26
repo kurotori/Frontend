@@ -2,18 +2,16 @@
   import { ref,reactive } from 'vue'; //Agrega reactividad
   import Nota from '../components/Nota.vue'
   
-  import { usarAlmacenNotas } from '../store/notas';
-  const almacenNotas = usarAlmacenNotas()
+  import { useAlmacenNotas } from '../store/notas';
+  const almacenNotas = useAlmacenNotas()
   
   const verTelon = ref(false) //Control del DIV 'telon'
-  
-  //const notas = ref([]) //Array para almacenar las notas
   
   const nNota = reactive({}) //Auxiliar para la nota 
 
   const agregarNota = ()=>{
         
-    almacenNotas.agregarNota(nNota.texto,nNota.titulo)
+    almacenNotas.agregarNota(nNota.titulo,nNota.texto)
     alert("Tu nota se ha creado con éxito")
     verTelon.value = false
     nNota.texto = ""

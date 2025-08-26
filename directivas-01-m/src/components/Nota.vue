@@ -8,7 +8,7 @@
 
 <template>
     <div class="nota
-              w-[250px] h-[280px]
+              w-[250px] h-[180px]
               bg-amber-300
               flex flex-col justify-between
               p-3.5
@@ -21,11 +21,14 @@
             </h2>
         </router-link>
         <p class="texto
-            text-justify">
+            h-full
+            text-justify break-normal text-ellipsis
+            ">
             {{ nota.texto }}
         </p>
 
-        <p class="fecha">
+        <p class="fecha
+            ">
             {{ nota.fecha }}
         </p>
 

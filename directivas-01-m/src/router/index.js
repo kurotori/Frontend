@@ -15,8 +15,7 @@ const router = createRouter(
             {
                 path: "/nota/:id",
                 component: VerNota,
-                name: 'verNota',
-                props: true
+                name: 'verNota'
             },
         ]
     }

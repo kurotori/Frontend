@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 
-export const usarAlmacenNotas = defineStore(
+export const useAlmacenNotas = defineStore(
     'notas', //Identificador único del almacenamiento 
     {
         state: ()=>({ //Estado reactivo del almacen

@@ -18,16 +18,9 @@
     nNota.titulo = ""
   }
 
+
 </script>
-<script>
-  export default {
-    data(){
-      return {
-        algo:null
-      }
-    }
-  }
-</script>
+
 
 <template>
   <div v-if="verTelon" class="telon
@@ -105,31 +98,25 @@
     
     </div>
     <div class="tablero
-            w-full h-[80vh]
+            w-full h-[70vh]
             p-9
             flex justify-around">
       <Nota v-for="nota in almacenNotas.notas" :nota="nota" 
             :key="nota.id" >
 
-      </Nota>
-      <!-- <div v-for="nota in notas"
-            :id="nota.id"
-            class="nota
-              w-[250px] h-[280px]
-              bg-amber-300
-              flex flex-col justify-between
-              p-3.5
-              ">
-        <p class="texto
-            text-justify">
-          {{ nota.texto }}
-        </p>
-        <p class="fecha">
-          {{ nota.fecha }}
-        </p>
-
-      </div> -->
+      </Nota>      
+    </div>
+    <div class="pie
+            w-full h-[10vh]
+            border-t border-black
+            flex justify-center
+            ">
+      <p class="cantNotas
+        font-bold">
+        {{ almacenNotas.notas.length }} Notas
+      </p>
       
+
     </div>
   </div>
 

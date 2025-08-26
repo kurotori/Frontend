@@ -12,6 +12,12 @@ export const useAlmacenNotas = defineStore(
             }
         },
         actions: { //Acciones para almacenar elementos, editarlos, eliminarlos, etc.
+            
+            /**
+             * Permite agregar una Nota al almacen de datos
+             * @param {*} titulo 
+             * @param {*} texto 
+             */
             agregarNota(titulo, texto){
                 const nota = {
                     texto: texto,
@@ -20,7 +26,8 @@ export const useAlmacenNotas = defineStore(
                     id: crypto.randomUUID()
                 }   
                 this.notas.push(nota)
-            }
+            },
+
         }
     }
 )

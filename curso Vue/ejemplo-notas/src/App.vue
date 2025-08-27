@@ -1,6 +1,7 @@
 
 <script setup>
   import { ref } from 'vue'
+  import Nota from './components/Nota.vue'
 
   const verTelon = ref(false)
   
@@ -17,7 +18,7 @@
     notas.value.push({
       id: crypto.randomUUID(),
       texto: nuevaNota.value,
-      fecha: new Date(),
+      fecha: new Date().toLocaleString("es-LA"),
       bgColor: getRandomColor()
     })
     console.log(notas)
@@ -30,7 +31,7 @@
   <main class="
           w-screen
           h-screen
-          bg-sky-900">
+          bg-white">
     <div v-if="verTelon" class="
             telon
             absolute
@@ -97,7 +98,7 @@
               font-bold
               mb-[25px]
               text-7xl
-              text-white">
+              ">
           Notas:
         </h1>
         <button @click="verTelon = true" class="
@@ -125,7 +126,9 @@
               h-4/5
               flex flex-wrap
               overflow-y-scroll">
-        <div v-for="nota in notas" 
+        <Nota v-for="nota in notas" :nota="nota"/>
+
+        <!-- <div v-for="nota in notas" 
           :key="nota.id" 
           :style="{backgroundColor : nota.bgColor}" 
           class="
@@ -142,7 +145,7 @@
           <div class="fecha">
             {{ nota.fecha.toLocaleDateString("es-LA") }}
           </div>
-        </div>
+        </div> -->
         
 
       </div>

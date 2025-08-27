@@ -1,5 +1,6 @@
 <script setup>
     import { defineProps } from 'vue'
+    import { RouterLink } from 'vue-router'
     defineProps([
         'nota'
     ])
@@ -14,6 +15,15 @@
             p-3
             flex flex-col justify-between"
     >
+        <h2 class="titulo
+            font-bold">
+            <router-link :to="
+                        {   name:'verNota', 
+                            params:{id: nota.id}
+                            }">
+                {{ nota.titulo }}
+            </router-link>
+        </h2>
         <p class="texto
             text-justify"
         >

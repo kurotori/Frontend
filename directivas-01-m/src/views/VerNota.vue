@@ -4,11 +4,11 @@
     import { useAlmacenNotas } from '../store/notas';
     
     const almacenNotas = useAlmacenNotas()
-    const ruta = useRoute()
+    const ruta = useRoute() //Objeto con información de la ruta
 
     const nota = computed(
         ()=>{
-            const idNota = ruta.params.id
+            const idNota = ruta.params.id //Obtiene la ID de la nota
             return almacenNotas.notaPorID(idNota)
         }
     )

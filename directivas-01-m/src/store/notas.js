@@ -18,14 +18,15 @@ export const useAlmacenNotas = defineStore(
              * @param {*} titulo 
              * @param {*} texto 
              */
-            agregarNota(titulo, texto){
-                const nota = {
-                    texto: texto,
-                    titulo: titulo,
+            agregarNota(nota){
+                const nuevaNota = {
+                    texto: nota.texto,
+                    titulo: nota.titulo,
                     fecha: new Date().toLocaleString(),
                     id: crypto.randomUUID()
                 }   
-                this.notas.push(nota)
+                
+                this.notas.push(nuevaNota)
             },
 
         }

@@ -7,11 +7,17 @@
   
   const verTelon = ref(false) //Control del DIV 'telon'
   
-  const nNota = reactive({}) //Auxiliar para la nota 
+  const nNota = reactive(
+                  {
+                    titulo : "",
+                    texto  : ""    
+                  }
+                ) //Auxiliar para la nota 
 
   const agregarNota = ()=>{
         
-    almacenNotas.agregarNota(nNota.titulo,nNota.texto)
+    almacenNotas.agregarNota(nNota.titulo, nNota.texto)
+    
     alert("Tu nota se ha creado con éxito")
     verTelon.value = false
     nNota.texto = ""

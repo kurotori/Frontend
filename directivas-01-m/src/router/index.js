@@ -13,7 +13,7 @@ const router = createRouter(
                 name: 'inicio'
             },
             {
-                path: "/nota/:id",
+                path: "/nota/:id", //URL expuesta
                 component: VerNota,
                 name: 'verNota'
             },

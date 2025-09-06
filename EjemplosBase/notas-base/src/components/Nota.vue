@@ -1,9 +1,8 @@
 <script setup>
-    import { defineProps } from 'vue'
-    import { RouterLink } from 'vue-router'
-    defineProps([
-        'nota'
-    ])
+import { RouterLink } from 'vue-router'
+defineProps([
+    'nota'
+])
 </script>
 
 <template>
@@ -13,24 +12,22 @@
             mt-4 mx-2
             rounded-2xl
             p-3
-            flex flex-col justify-between"
-    >
+            flex flex-col justify-between">
         <h2 class="titulo
             font-bold">
-            <router-link :to="
-                        {   name:'verNota', 
-                            params:{id: nota.id}
-                            }">
+            <router-link :to="{
+                name: 'verNota',
+                params: { id: nota.id }
+            }">
                 {{ nota.titulo }}
             </router-link>
         </h2>
         <p class="texto
-            text-justify"
-        >
-        {{ nota.texto }}
+            text-justify">
+            {{ nota.texto }}
         </p>
         <p class="fecha">
-            {{ nota.tiempo }}
+            {{ nota.fecha }}
         </p>
     </div>
 </template>

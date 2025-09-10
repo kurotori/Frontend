@@ -10,7 +10,9 @@ const almacenNotas = useAlmacenNotas()
 
 <template>
   <Encabezado></Encabezado>
+
   <router-view></router-view>
+  
   <Pie class="border-t border-t-black" :almacenNotas="almacenNotas"></Pie>
 </template>
 

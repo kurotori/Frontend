@@ -8,12 +8,6 @@ import { useAlmacenNotas } from '../store/notas'
 const almacenNotas = useAlmacenNotas()
 almacenNotas.obtenerNotas()
 
-const n1 = {
-  id: 20,
-  titulo: 'probando',
-  texto: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, dignissimos!',
-  fecha: '20/05/2010'
-}
 </script>
 
 <template>

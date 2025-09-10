@@ -13,7 +13,10 @@ export const useAlmacenNotas = defineStore(
     getters: {
       //Métodos para obtener elementos del almacen
       notaPorID: (state) => {
-        return (notaId) => state.notas.find((nota) => nota.id === notaId);
+        return (notaId) => 
+          state.notas.find(
+            (nota) => nota.id === notaId
+          );
       },
     },
     actions: {

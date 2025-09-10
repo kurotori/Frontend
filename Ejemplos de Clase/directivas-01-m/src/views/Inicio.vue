@@ -16,7 +16,7 @@
 
   const agregarNota = ()=>{
         
-    almacenNotas.agregarNota(nNota.titulo, nNota.texto)
+    almacenNotas.agregarNota(nNota)
     
     alert("Tu nota se ha creado con éxito")
     verTelon.value = false
@@ -47,6 +47,7 @@
         class="titulo
           bg-white
           border-2 border-gray-400">
+
       <textarea v-model="nNota.texto" rows="4" class="texto
                           bg-white
                           border-2 border-gray-400
@@ -112,6 +113,7 @@
 
       </Nota>      
     </div>
+    
     <div class="pie
             w-full h-[10vh]
             border-t border-black

@@ -34,10 +34,12 @@ const agregarNota = () => {
         z-10
         flex
         justify-center
-      items-center">
+      items-center
+      ">
+
         <div class="nuevaNota
           w-1/3 h-1/3
-          bg-amber-100
+          bg-green-300
           rounded-2xl
           p-4
           flex flex-col justify-center">

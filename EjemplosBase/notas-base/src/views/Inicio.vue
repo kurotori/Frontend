@@ -6,6 +6,7 @@ import Nota from '../components/Nota.vue'
 import { useAlmacenNotas } from '../store/notas'
 
 const almacenNotas = useAlmacenNotas()
+almacenNotas.obtenerNotas()
 
 const n1 = {
   id: 20,
@@ -18,7 +19,6 @@ const n1 = {
 <template>
   <div class="principal 
           w-[100vw] h-[80vh]
-          border-b border-b-black
     ">
     <div class="blocDeNotas
             h-full

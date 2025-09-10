@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import instanciaAxios from "../services/api";
 
 export const useAlmacenNotas = defineStore(
   "notas", //Identificador único del almacenamiento
@@ -6,6 +7,8 @@ export const useAlmacenNotas = defineStore(
     state: () => ({
       //Estado reactivo del almacen
       notas: [], //Almacen de las notas
+      loading: false,
+      error: null,
     }),
     getters: {
       //Métodos para obtener elementos del almacen
@@ -20,15 +23,46 @@ export const useAlmacenNotas = defineStore(
        * Permite agregar una Nota al almacen de datos
        * @param {*} nota
        */
-      agregarNota(nota) {
+      async agregarNota(nota) { //AXIOS: al agregar axios, los métodos que se comunican con el backend deben volverse 'async'
         const nuevaNota = {
           texto: nota.texto,
           titulo: nota.titulo,
-          fecha: new Date().toLocaleString(),
-          id: crypto.randomUUID(),
+          //fecha: new Date().toLocaleString(),
+          //id: crypto.randomUUID(),
         };
-        this.notas.push(nuevaNota);
+        //this.notas.push(nuevaNota);
+        this.loading = true
+        this.error = null
+        try {
+          const respuesta = 
+            await instanciaAxios.post(
+              'nota/nueva',
+              nuevaNota
+            )
+          alert("El servidor dice: " + respuesta.data.estado + "," + respuesta.data.mensaje)
+          this.obtenerNotas()
+        } catch (error) {
+          this.error = error
+        } finally {
+          this.loading = false
+        }
+
       },
+
+      async obtenerNotas(){
+        this.loading = true
+        this.error = null
+        try {
+          const respuesta = await instanciaAxios.get('notas')
+          this.notas = respuesta.data.notas
+        } catch (error) {
+          this.error = error          
+        } finally {
+          this.loading = false
+        }
+      }
     },
   }
 );
+
+

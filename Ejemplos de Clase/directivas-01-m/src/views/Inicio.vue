@@ -7,12 +7,12 @@
   
   const verTelon = ref(false) //Control del DIV 'telon'
   
-  const nNota = reactive(
+  const nNota = reactive(  //Objeto auxiliar para la nota 
                   {
                     titulo : "",
                     texto  : ""    
                   }
-                ) //Auxiliar para la nota 
+                ) 
 
   const agregarNota = ()=>{
         

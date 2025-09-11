@@ -1,6 +1,8 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import Inicio from '../views/Inicio.vue'
 import VerNota from '../views/VerNota.vue'
+import InicioSesion from '../views/InicioSesion.vue'
+import Registro from '../views/Registro.vue'
 
 const router = createRouter(
     {
@@ -10,6 +12,16 @@ const router = createRouter(
                 path: "/",
                 component: Inicio,
                 name: 'inicio'
+            }, 
+            {
+                path: "/ingresar",
+                component: InicioSesion,
+                name: 'inicioSesion'
+            },
+            {
+                path: "/registro",
+                component: Registro,
+                name: 'registro'
             },
             {
                 path:"/nota/:id",

@@ -26,7 +26,7 @@ defineProps([
             
         </h2>
         <p class="texto
-            text-justify">
+            text-justify overflow-x-clip">
             {{ nota.texto }}
         </p>
         <p class="fecha">

@@ -9,17 +9,17 @@
 
     const enviarDatos = async ()=>{
         const datosUsuario = {
-            email:email.value,
-            password:password.value,
+            email: email.value,
+            password: password.value,
         }
 
         try {
             const respuesta = await instanciaAxios.post('ingresar', datosUsuario)
             console.log("RESPUESTA -->") 
             console.log(respuesta.data)
-            alert("El servidor dice: " + respuesta.data.estado + "\n" + respuesta.data.mensaje)
-            let destino = respuesta.data.destino
-            router.push(destino)
+            alert("El servidor dice: " + respuesta.data)
+            //let destino = respuesta.data.destino
+            //router.push(destino)
 
         } catch (error) {
             console.error("ERROR --> ")

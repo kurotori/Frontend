@@ -3,6 +3,7 @@ import Inicio from '../views/Inicio.vue'
 import VerNota from '../views/VerNota.vue'
 import InicioSesion from '../views/InicioSesion.vue'
 import Registro from '../views/Registro.vue'
+import Verificar from '../views/Verificar.vue'
 
 const router = createRouter(
     {
@@ -28,6 +29,12 @@ const router = createRouter(
                 component: VerNota,
                 name: 'verNota'
             },
+            //Agregado para pruebas con JWT
+            {
+                path:'/verificar',
+                component:Verificar,
+                name: 'verificar'
+            }
             
         ]
     }

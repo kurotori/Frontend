@@ -1,37 +1,37 @@
 <script setup>
-    import { ref } from 'vue';
-    import router from '../router';
+import { ref } from 'vue';
+import router from '../router';
 
-    import instanciaAxios from '../services/api';
+import instanciaAxios from '../services/api';
 
-    const email = ref('')
-    const password = ref('')
+const email = ref('')
+const password = ref('')
 
-    const enviarDatos = async ()=>{
-        const datosUsuario = {
-            email: email.value,
-            password: password.value,
-        }
-
-        try {
-            await instanciaAxios.axiosCSRF.get('').then(
-                (datos)=>{
-                    const respuesta = instanciaAxios.axiosBase.post('ingresar', datosUsuario)
-                    console.log("RESPUESTA -->") 
-                    console.log(respuesta.data)
-                    alert("El servidor dice: " + respuesta.data)
-                }
-            )
-            
-            //let destino = respuesta.data.destino
-            //router.push(destino)
-
-        } catch (error) {
-            console.error("ERROR --> ")
-            console.error(error)
-            console.error(error.response.data)
-        }
+const enviarDatos = async () => {
+    const datosUsuario = {
+        email: email.value,
+        password: password.value,
     }
+
+    try {
+        await instanciaAxios.axiosCSRF.get('')//.then(
+        //datos => {
+        const respuesta = await instanciaAxios.axiosBase.post('ingresar', datosUsuario)
+        console.log("RESPUESTA -->")
+        console.log(respuesta.data)
+        alert("El servidor dice: " + respuesta.data)
+        //}
+        //)
+
+        //let destino = respuesta.data.destino
+        //router.push(destino)
+
+    } catch (error) {
+        console.error("ERROR --> ")
+        console.error(error)
+        console.error(error.response.data)
+    }
+}
 </script>
 
 <template>
@@ -79,14 +79,13 @@
 </template>
 
 <style scoped>
-    .formLogin input{
-        margin-left: 20px;
-        background-color: white;
-    }
+.formLogin input {
+    margin-left: 20px;
+    background-color: white;
+}
 
-    .error {
-        border: solid red 1px;
-        background-color: pink;
-    }
-    
+.error {
+    border: solid red 1px;
+    background-color: pink;
+}
 </style>

@@ -18,7 +18,6 @@ almacenNotas.obtenerNotas()
             h-full
             flex justify-center">
       <Nota v-for="nota in almacenNotas.notas" :nota="nota" :key="nota.id">
-
       </Nota>
 
     </div>

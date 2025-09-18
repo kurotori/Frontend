@@ -9,7 +9,9 @@ import instanciaAxios from "./services/api";//AXIOS: Se agrega axios al proyecto
 
 //createApp(App).mount('#app')
 
+const pinia = createPinia();
 const app = createApp(App);
+
 
 const pinia = createPinia(); //PINIA: Se crea la instancia de pinia
 

@@ -8,6 +8,8 @@ const instanciaAxios = {
 
     axiosBase: axios.create(
                     {
+                        withCredentials : true,
+                        withXSRFToken : true,
                         baseURL : 'http://127.0.0.1:8000/api/',
                     }
                 ),

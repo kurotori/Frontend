@@ -14,10 +14,15 @@
         }
 
         try {
-            const respuesta = await instanciaAxios.post('ingresar', datosUsuario)
-            console.log("RESPUESTA -->") 
-            console.log(respuesta.data)
-            alert("El servidor dice: " + respuesta.data)
+            await instanciaAxios.axiosCSRF.get('').then(
+                (datos)=>{
+                    const respuesta = instanciaAxios.axiosBase.post('ingresar', datosUsuario)
+                    console.log("RESPUESTA -->") 
+                    console.log(respuesta.data)
+                    alert("El servidor dice: " + respuesta.data)
+                }
+            )
+            
             //let destino = respuesta.data.destino
             //router.push(destino)
 

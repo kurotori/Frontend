@@ -16,7 +16,7 @@
         }
 
         try {
-            const respuesta = await instanciaAxios.post('usuario/nuevo', nUsuario)
+            const respuesta = await instanciaAxios.axiosBase.post('usuario/nuevo', nUsuario)
             console.log("RESPUESTA -->") 
             console.log(respuesta.data)
             alert("El servidor dice: " + respuesta.data.estado + "\n" + respuesta.data.mensaje)

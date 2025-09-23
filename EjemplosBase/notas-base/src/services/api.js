@@ -8,7 +8,7 @@ const instanciaAxios = {
   axiosBase: axios.create({
     headers:{
       Accept:'application/json',
-      "X-XSRF-TOKEN": getCookie("XSRF-TOKEN")
+      //"X-XSRF-TOKEN": getCookie("XSRF-TOKEN")
     },
     withCredentials: true,
     withXSRFToken: true,

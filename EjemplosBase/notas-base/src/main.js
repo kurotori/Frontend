@@ -12,11 +12,6 @@ import instanciaAxios from "./services/api";//AXIOS: Se agrega axios al proyecto
 const pinia = createPinia();
 const app = createApp(App);
 
-//AXIOS: configuración
-/* axios.defaults.baseURL = 'http://127.0.0.1:8000/api/' // AXIOS: Se establece la URL base a la que apunta axios
-axios.defaults.headers.post['Content-Type'] = 'application/json' //AXIOS: configuración de cabeceras 
-app.config.globalProperties.$axios = axios //AXIOS: Agregamos axios como propiedad global
- */
 app.use(pinia);
 app.use(router);
 //app.use(instanciaAxios);

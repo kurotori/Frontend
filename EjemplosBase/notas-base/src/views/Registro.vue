@@ -16,6 +16,7 @@
         }
 
         try {
+            await instanciaAxios.axiosCSRF.get('')
             const respuesta = await instanciaAxios.axiosBase.post('usuario/nuevo', nUsuario)
             console.log("RESPUESTA -->") 
             console.log(respuesta.data)

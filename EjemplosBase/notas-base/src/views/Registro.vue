@@ -1,11 +1,14 @@
 <script setup>
-    import { ref } from 'vue';
+    import { ref ,reactive} from 'vue';
+    import router from '../router';
     import instanciaAxios from '../services/api';
 
     const nombreUsuario = ref('')
     const email = ref('')
     const password = ref('')
     const password_confirmation = ref('')
+
+    const errores =  reactive({})
 
     const enviarDatos = async ()=>{
         const nUsuario = {
@@ -21,10 +24,16 @@
             console.log("RESPUESTA -->") 
             console.log(respuesta.data)
             alert("El servidor dice: " + respuesta.data.estado + "\n" + respuesta.data.mensaje)
+            let destino = respuesta.data.destino
+            router.push(destino)
         } catch (error) {
-            console.error("ERROR --> ")
-            console.error(error)
-            console.error(error.response.data)
+            
+            //console.error(error)
+            console.error(error.response.data.errors)
+            errores = error.response.data.errors
+            if (errores.email) {
+                
+            }
         }
     }
 
@@ -60,7 +69,13 @@
                 <input type="text" id="nombreUsuario" v-model="nombreUsuario">
 
                 <label for="email">Email:</label>
-                <input type="text" id="email" v-model="email">
+                <div>
+                    <input type="text" id="email" v-model="email" 
+                        class="w-fit"
+                    >
+                    <p class="error">Probando...</p>
+                </div>
+                
 
                 <label for="password">Contraseña:</label>
                 <input type="password" id="password" v-model="password" required>
@@ -87,7 +102,9 @@
     }
 
     .error {
-        border: solid red 1px;
+        color: red;
+        font-size: small;
+        font-weight: bold;
         background-color: pink;
     }
     

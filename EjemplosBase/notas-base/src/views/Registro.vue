@@ -20,7 +20,7 @@
 
         try {
             await instanciaAxios.axiosCSRF.get('')
-            const respuesta = await instanciaAxios.axiosBase.post('usuario/nuevo', nUsuario)
+            const respuesta = await instanciaAxios.axiosBase.post('usuarios/nuevo', nUsuario)
             console.log("RESPUESTA -->") 
             console.log(respuesta.data)
             alert("El servidor dice: " + respuesta.data.estado + "\n" + respuesta.data.mensaje)

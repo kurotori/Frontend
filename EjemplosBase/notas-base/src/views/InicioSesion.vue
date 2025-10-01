@@ -1,9 +1,12 @@
 <script setup>
 import { ref } from 'vue';
 import router from '../router';
+import { useAlmacenSesion } from '../store/sesion'; 
 
 import axios from 'axios';
 import instanciaAxios from '../services/api';
+
+const almacenSesion = useAlmacenSesion()
 
 const email = ref('')
 const password = ref('')
@@ -15,43 +18,7 @@ const enviarDatos = async () => {
         password: password.value,
     }
 
-    try {
-        await axios.get(
-            "http://localhost:8000/sanctum/csrf-cookie",
-            {
-                withCredentials: true,
-                //withXSRFToken:true
-            }
-        )
-        //await instanciaAxios.axiosCSRF.get('',{withCredentials:true})
-        //console.log('COOKIE')
-        //console.log(getCookie('XSRF-TOKEN'))
-        //.then(
-        //datos => {
-        const respuesta = await axios.//instanciaAxios.axiosBase.
-            post(
-                'http://localhost:8000/api/ingresar',
-                datosUsuario,
-                {
-                    headers: {
-                        Accept: 'application/json'
-                    },
-                    withCredentials: true,
-                    withXSRFToken: true,
-                    xsrfCookieName: 'XSRF-TOKEN',
-
-                })
-        console.log("RESPUESTA -->")
-        console.log(respuesta)
-        alert("El servidor dice: " + respuesta.data)
-
-
-    } catch (error) {
-        console.error("ERROR --> ")
-        console.error(error)
-        console.error(error.response.data)
-        alert(error.response.data.mensaje)
-    }
+    almacenSesion.iniciarSesion(datosUsuario)
 }
 </script>
 

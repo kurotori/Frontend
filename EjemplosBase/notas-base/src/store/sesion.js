@@ -19,7 +19,7 @@ export const useAlmacenSesion = defineStore(
       //Acciones para almacenar elementos, editarlos, eliminarlos, etc.
         agregarSesion(usuarioN){
           this.usuario = usuarioN
-          console.log(this.usuario.name)
+         
         },
 
         async iniciarSesion(datosUsuario){
@@ -34,12 +34,10 @@ export const useAlmacenSesion = defineStore(
                         datosUsuario)
                 console.log("RESPUESTA -->")
                 console.log(respuesta.data.usuario)
-                //console.log(respuesta)
+                
                 alert("El servidor dice: " + respuesta.data.mensaje)
                 
                 this.agregarSesion(respuesta.data.usuario)
-                const algo = this.sesionActiva
-                console.log(algo)
 
             } catch (error) {
                 this.error = error

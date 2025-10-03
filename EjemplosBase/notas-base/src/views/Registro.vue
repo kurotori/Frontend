@@ -69,9 +69,11 @@
                 <input type="text" id="nombreUsuario" v-model="nombreUsuario">
 
                 <label for="email">Email:</label>
-                <div>
+                <div class="
+                        w-full
+                ">
                     <input type="text" id="email" v-model="email" 
-                        class="w-fit"
+                        class="w-full"
                     >
                     <p class="error">Probando...</p>
                 </div>

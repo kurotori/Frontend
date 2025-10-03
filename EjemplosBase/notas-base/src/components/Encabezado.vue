@@ -1,11 +1,13 @@
 <script setup>
 import { ref, reactive } from 'vue'
 import { useAlmacenNotas } from '../store/notas'
+import { useAlmacenSesion } from '../store/sesion'
 
 const verTelon = ref(false)
 
-//Inicialización del almacen de notas
+//Inicialización de los almacenes de datos
 const almacenNotas = useAlmacenNotas()
+const almacenSesion = useAlmacenSesion()
 
 const notas = almacenNotas.notas
 
@@ -76,16 +78,17 @@ const agregarNota = () => {
           p-5 h-[15vh]
           border-b-black border-b-1">
         <h1 class="text-3xl font-bold">Notas</h1>
-        <button @click="verTelon = true" class="
+        <button v-if="almacenSesion.sesionIniciada" @click="verTelon = true" class="
                 h-[60px]
                 aspect-square
-                rounded-3xl
+                rounded-4xl
                 flex items-center justify-center
-              bg-blue-950 text-white
+                bg-blue-950 text-white
                 text-3xl
                 hover:bg-blue-500
                 active:bg-blue-300
                 ">
-            +</button>
+            +
+          </button>
     </div>
 </template>

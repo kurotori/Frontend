@@ -6,22 +6,19 @@ export const useAlmacenSesion = defineStore(
   {
     state: () => ({
       //Estado reactivo del almacen
-      usuario: [], //Almacen de las notas
+      usuario: null, //Almacen de las notas
       loading: false,
       error: null,
     }),
     getters: {
       //Métodos para obtener elementos del almacen
-      verUsuario: (state) => {
-        return () => {
-            usuario[0]
-        }
-      },
+      sesionActiva: (state)=> !!state.usuario
     },
     actions: {
       //Acciones para almacenar elementos, editarlos, eliminarlos, etc.
-        agregarSesion(usuario){
-          this.usuario[0] = usuario
+        agregarSesion(usuarioN){
+          this.usuario = usuarioN
+          console.log(this.usuario)
         },
 
         async iniciarSesion(datosUsuario){
@@ -35,10 +32,12 @@ export const useAlmacenSesion = defineStore(
                         '/ingresar',
                         datosUsuario)
                 console.log("RESPUESTA -->")
-                console.log(respuesta)
+                console.log(respuesta.data.usuario)
+                //console.log(respuesta)
                 alert("El servidor dice: " + respuesta.data.mensaje)
+                
                 this.agregarSesion(respuesta.data.usuario)
-
+                console.log(this.sesionActiva)
 
             } catch (error) {
                 this.error = error
@@ -50,18 +49,7 @@ export const useAlmacenSesion = defineStore(
             this.loading = false
         },
 
-      async obtenerNotas(){
-        this.loading = true
-        this.error = null
-        try {
-          const respuesta = await instanciaAxios.get('notas')
-          this.notas = respuesta.data.notas
-        } catch (error) {
-          this.error = error          
-        } finally {
-          this.loading = false
-        }
-      }
     },
+
   }
 );

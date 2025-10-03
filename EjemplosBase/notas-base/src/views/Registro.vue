@@ -30,7 +30,7 @@
             
             //console.error(error)
             console.error(error.response.data.errors)
-            errores = error.response.data.errors
+            errores.e = error.response.data.errors
             if (errores.email) {
                 
             }

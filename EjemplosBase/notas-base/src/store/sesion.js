@@ -12,13 +12,14 @@ export const useAlmacenSesion = defineStore(
     }),
     getters: {
       //Métodos para obtener elementos del almacen
-      sesionActiva: (state)=> !!state.usuario
+      sesionIniciada: (state)=> !!state.usuario,
+      sesionActiva: (state)=> state.usuario
     },
     actions: {
       //Acciones para almacenar elementos, editarlos, eliminarlos, etc.
         agregarSesion(usuarioN){
           this.usuario = usuarioN
-          console.log(this.usuario)
+          console.log(this.usuario.name)
         },
 
         async iniciarSesion(datosUsuario){
@@ -37,7 +38,8 @@ export const useAlmacenSesion = defineStore(
                 alert("El servidor dice: " + respuesta.data.mensaje)
                 
                 this.agregarSesion(respuesta.data.usuario)
-                console.log(this.sesionActiva)
+                const algo = this.sesionActiva
+                console.log(algo)
 
             } catch (error) {
                 this.error = error

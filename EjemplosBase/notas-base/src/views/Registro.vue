@@ -25,12 +25,12 @@
             console.log(respuesta.data)
             alert("El servidor dice: " + respuesta.data.estado + "\n" + respuesta.data.mensaje)
             let destino = respuesta.data.destino
-            router.push(destino)
+            router.push({name: destino})
         } catch (error) {
             
             //console.error(error)
             console.error(error.response.data.errors)
-            errores = error.response.data.errors
+            errores.e = error.response.data.errors
             if (errores.email) {
                 
             }

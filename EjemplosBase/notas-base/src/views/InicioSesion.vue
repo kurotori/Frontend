@@ -1,30 +1,15 @@
 <script setup>
 import { ref } from 'vue';
 import router from '../router';
+import { useAlmacenSesion } from '../store/sesion'; 
 
 import axios from 'axios';
 import instanciaAxios from '../services/api';
 
+const almacenSesion = useAlmacenSesion()
+
 const email = ref('')
 const password = ref('')
-
-
-function getCookie(cName) {
-  const name = cName + "=";
-  const decodedCookie = decodeURIComponent(document.cookie);
-  const ca = decodedCookie.split(';');
-
-  for (let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) === ' ') {
-      c = c.substring(1);
-    }
-    if (c.indexOf(name) === 0) {
-      return c.substring(name.length, c.length);
-    }
-  }
-  return "";
-}
 
 
 const enviarDatos = async () => {
@@ -33,46 +18,7 @@ const enviarDatos = async () => {
         password: password.value,
     }
 
-    try {
-        await axios.get(
-            "http://localhost:8000/sanctum/csrf-cookie",
-            {
-                withCredentials:true,
-                //withXSRFToken:true
-            }
-        )
-        //await instanciaAxios.axiosCSRF.get('',{withCredentials:true})
-        //console.log('COOKIE')
-        //console.log(getCookie('XSRF-TOKEN'))
-        //.then(
-        //datos => {
-        const respuesta = await axios.//instanciaAxios.axiosBase.
-            post(
-                'http://localhost:8000/api/ingresar', 
-                datosUsuario, 
-                {
-                    headers:{
-                        Accept: 'application/json'
-                    },
-                    withCredentials:true,
-                    withXSRFToken:true,
-                    xsrfCookieName:'XSRF-TOKEN',
-
-                })
-        console.log("RESPUESTA -->")
-        console.log(respuesta)
-        alert("El servidor dice: " + respuesta.data)
-        //}
-        //)
-
-        //let destino = respuesta.data.destino
-        //router.push(destino)
-
-    } catch (error) {
-        console.error("ERROR --> ")
-        console.error(error)
-        console.error(error.response.data)
-    }
+    almacenSesion.iniciarSesion(datosUsuario)
 }
 </script>
 
@@ -96,8 +42,7 @@ const enviarDatos = async () => {
                 Ingresar en el Sistema
             </h1>
             <br>
-            <div 
-                                class="formLogin
+            <div class="formLogin
                                     relative top-10
                                     w-4/5
                                     grid grid-cols-2 grid-rows-4 gap-1
@@ -114,7 +59,7 @@ const enviarDatos = async () => {
                             col-span-2
                             bg-amber-50
                     ">
-                    Crear Usuario
+                    Iniciar Sesión
                 </button>
             </div>
         </div>

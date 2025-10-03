@@ -26,14 +26,12 @@ export const useAlmacenNotas = defineStore(
        * Permite agregar una Nota al almacen de datos
        * @param {*} nota
        */
-      async agregarNota(nota) { //AXIOS: al agregar axios, los métodos que se comunican con el backend deben volverse 'async'
+      async agregarNota(nota) { //FRONTEND: al agregar axios, los métodos que se comunican con el backend deben volverse 'async'
         const nuevaNota = {
           texto: nota.texto,
           titulo: nota.titulo,
-          //fecha: new Date().toLocaleString(),
-          //id: crypto.randomUUID(),
         };
-        //this.notas.push(nuevaNota);
+
         this.loading = true
         this.error = null
         try {

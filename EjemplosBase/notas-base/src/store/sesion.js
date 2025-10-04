@@ -50,6 +50,11 @@ export const useAlmacenSesion = defineStore(
         },
 
     },
-
+    persist: true, 
+    /**
+     * FRONTEND: Esta opción le indica al plugin de persistencia que debe habilitar la persistencia para 
+     * este almacen.
+     */
+    
   }
 );

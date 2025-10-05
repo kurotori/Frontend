@@ -16,6 +16,8 @@ const nuevaNota = reactive({
     texto: ""
 })
 
+const verCuadrousuario = ref(false)
+
 const agregarNota = () => {
 
     almacenNotas.agregarNota(nuevaNota)
@@ -78,6 +80,14 @@ const agregarNota = () => {
           p-5 h-[15vh]
           border-b-black border-b-1">
         <h1 class="text-3xl font-bold">Notas</h1>
+
+        <div class="usuario
+                h-full aspect-square
+                bg-contain bg-[url(/img/user.png)]
+                ">
+
+        </div>
+
         <button v-if="almacenSesion.sesionIniciada" @click="verTelon = true" class="
                 h-[60px]
                 aspect-square
@@ -92,3 +102,9 @@ const agregarNota = () => {
           </button>
     </div>
 </template>
+
+<style scoped>
+
+    
+
+</style>

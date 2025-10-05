@@ -2,10 +2,16 @@
 import { ref, reactive } from 'vue'
 import Nota from '../components/Nota.vue'
 
-//Inicioalización del almacen de notas
 import { useAlmacenNotas } from '../store/notas'
+import { useAlmacenSesion } from '../store/sesion'
 
 const almacenNotas = useAlmacenNotas()
+const almacenSesion = useAlmacenSesion()
+
+if ( ! almacenSesion.sesionIniciada) {
+  router.push({name: 'inicioSesion'})
+}
+
 almacenNotas.obtenerNotas()
 
 </script>

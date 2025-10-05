@@ -3,14 +3,18 @@ import { ref } from 'vue';
 import router from '../router';
 import { useAlmacenSesion } from '../store/sesion'; 
 
-import axios from 'axios';
-import instanciaAxios from '../services/api';
-
 const almacenSesion = useAlmacenSesion()
 
 const email = ref('')
 const password = ref('')
 
+/**
+ * FRONTEND: Chequea si hay una sesión iniciada y si es válida, envía a la página de inicio
+ */
+
+if (almacenSesion.sesionIniciada) {
+    router.push({name:'inicio'})
+}
 
 const enviarDatos = async () => {
     const datosUsuario = {

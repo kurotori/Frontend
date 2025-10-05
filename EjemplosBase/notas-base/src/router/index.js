@@ -10,6 +10,11 @@ const router = createRouter(
         history: createWebHistory(import.meta.env.BASE_URL),
         routes: [
             {
+                path:"/",
+                component: Inicio,
+                name: 'main'
+            },
+            {
                 path: "/notas",
                 component: Inicio,
                 name: 'inicio'

@@ -72,7 +72,6 @@ export const useAlmacenSesion = defineStore(
             if (error.response.status == 401) {
               //alert("Debe iniciar sesion")
               this.cerrarSesion()
-              router.push({name:'inicioSesion'})
             }
           }
           this.loading = false
@@ -91,7 +90,7 @@ export const useAlmacenSesion = defineStore(
           try {
             await instanciaAxios.axiosCSRF.get('')
             const respuesta = await instanciaAxios.axiosBase.post('usuarios/cerrarSesion')
-
+            router.push({name:'inicioSesion'})
           } catch (error) {
             this.error = error
             console.error("ERROR --> ")

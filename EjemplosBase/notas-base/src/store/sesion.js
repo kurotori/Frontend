@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import instanciaAxios from "../services/api";
+import router from "../router";
 
 export const useAlmacenSesion = defineStore(
   "sesion", //Identificador único del almacenamiento
@@ -38,6 +39,7 @@ export const useAlmacenSesion = defineStore(
                 alert("El servidor dice: " + respuesta.data.mensaje)
                 
                 this.agregarSesion(respuesta.data.usuario)
+                router.push({name:respuesta.data.destino})
 
             } catch (error) {
                 this.error = error
@@ -49,11 +51,58 @@ export const useAlmacenSesion = defineStore(
             this.loading = false
         },
 
+        /**
+         * Permite chequear si la sesión almacenada sigue estando activa
+         */
+        async chequearSesion(){
+          this.loading = true
+          this.error = null
+
+          try {
+             //Pruebas
+            const pruebas = await instanciaAxios.axiosBase.get('user')
+            console.log("Pruebas")
+            console.log(pruebas)
+            ///
+          } catch (error) {
+            this.error = error
+            console.error("ERROR --> ")
+                
+            //FRONTEND: Si se recibe un error 401, indica que el usuario no esta autenticado 
+            if (error.response.status == 401) {
+              //alert("Debe iniciar sesion")
+              this.cerrarSesion()
+              router.push({name:'inicioSesion'})
+            }
+          }
+          this.loading = false
+        },
+
+
+        /**
+         * Permite cerrar la sesión abierta 
+         */
+        async cerrarSesion(){
+          this.usuario = null
+
+          this.loading = true
+          this.error = null
+
+          try {
+            await instanciaAxios.axiosCSRF.get('')
+            const respuesta = await instanciaAxios.axiosBase.post('usuarios/cerrarSesion')
+
+          } catch (error) {
+            this.error = error
+            console.error("ERROR --> ")
+          }
+        }
+
     },
     persist: true, 
     /**
-     * FRONTEND: Esta opción le indica al plugin de persistencia que debe habilitar la persistencia para 
-     * este almacen.
+     * FRONTEND: Esta opción le indica al plugin de persistencia que debe habilitar 
+     * la persistencia para este almacen.
      */
     
   }

@@ -1,6 +1,7 @@
 <script setup>
 import { ref, reactive } from 'vue'
 import Nota from '../components/Nota.vue'
+import router from '../router'
 
 import { useAlmacenNotas } from '../store/notas'
 import { useAlmacenSesion } from '../store/sesion'
@@ -10,7 +11,11 @@ const almacenSesion = useAlmacenSesion()
 
 if ( ! almacenSesion.sesionIniciada) {
   router.push({name: 'inicioSesion'})
+} else {
+  
 }
+
+almacenSesion.chequearSesion()
 
 almacenNotas.obtenerNotas()
 

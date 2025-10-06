@@ -81,14 +81,50 @@ const agregarNota = () => {
           border-b-black border-b-1">
         <h1 class="text-3xl font-bold">Notas</h1>
 
-        <div class="usuario
-                h-full aspect-square
-                bg-contain bg-[url(/img/user.png)]
+        <div v-if="almacenSesion.sesionIniciada"
+             class="zonaUsuario
+                h-full w-[30vh]
+                flex justify-between
                 ">
 
-        </div>
+            <label for="controlMenu">
+                <div class="usuario
+                    h-full aspect-square
+                    bg-contain bg-[url(/img/user.png)] 
+                    hover:border-black hover:border-4 rounded-4xl
+                    ">
+                </div>
+            </label>
 
-        <button v-if="almacenSesion.sesionIniciada" @click="verTelon = true" class="
+            <input type="checkbox" id="controlMenu" 
+                        class="hidden">
+            <div class="menuUsuario hidden
+                    absolute top-[12vh]
+                    h-[15vh] w-[30vh]
+                    border-black border-2 rounded-2xl
+                    bg-white
+                    ">
+                <p class="nombreUsuario
+                    relative left-2
+                    text-[3vh] font-bold">
+                    {{ almacenSesion.usuario.name }}
+                </p>
+                <p class="nombreUsuario
+                    relative left-2 top-[-1vh]
+                    text-[2vh]">
+                    {{ almacenSesion.usuario.email }}
+                </p>
+                <p @click="almacenSesion.cerrarSesion()" class="cerrarSesion
+                    w-full
+                    text-center
+                    hover:font-bold
+                    ">
+                    Cerrar Sesión
+                </p>
+            </div>
+
+
+            <button @click="verTelon = true" class="
                 h-[60px]
                 aspect-square
                 rounded-4xl
@@ -98,13 +134,18 @@ const agregarNota = () => {
                 hover:bg-blue-500
                 active:bg-blue-300
                 ">
-            +
-          </button>
+                +
+            </button>
+        </div>
+
+        
     </div>
 </template>
 
 <style scoped>
-
+    #controlMenu:checked + .menuUsuario{
+        display: block;
+    }
     
 
 </style>

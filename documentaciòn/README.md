@@ -4,12 +4,17 @@ Esta serie de documentos contiene los pasos básicos para desarrollar un fronten
 
 Estos documentos complementan el contenido de la **[Guía de Desarrollo de FrontEnd con Vue.js (con Vite) y TailwindCSS][l8]**.
 
-> **Nota:** En los archivos mencionados por estadocumentación se pueden ubicar los cambios mencionados, o que se consideren importantes **buscando los comentarios** que comienzan por la palabra clave `FRONTEND` de la siguiente forma:
+> **Nota:** En los archivos mencionados por esta documentación se pueden ubicar los cambios mencionados, o que se consideren importantes **buscando los comentarios** que comienzan por la palabra clave `FRONTEND` de la siguiente forma:
 
-~~~js
-   //FRONTEND: 
-~~~
+```js
+//FRONTEND:
+```
 
+## Contenido:
+
+- [Pinia: Manejo de Estado a nivel global][l1]
+
+[l1]: Pinia_ManejoDeEstadosGlobales.md
 [l6]: ../EjemplosBase/notas-base/
 [l7]: https://github.com/kurotori/Backend
 [l8]: https://docs.google.com/document/d/1KLCvbKVAmCcO2F4eVnVi3brDR44-f2TV7XvzVANVjtw/edit?usp=sharing

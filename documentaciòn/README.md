@@ -4,7 +4,7 @@ Esta serie de documentos contiene los pasos básicos para desarrollar un fronten
 
 Estos documentos complementan el contenido de la **[Guía de Desarrollo de FrontEnd con Vue.js (con Vite) y TailwindCSS][l8]**.
 
-> **Nota:** En los archivos mencionados por estadocumentación se pueden ubicar los cambios mencionados, o que se consideren importantes **buscando los comentarios** que comienzan por la palabra clave `FRONTEND` de la siguiente forma:
+> **Nota:** En los archivos mencionados por esta documentación se pueden ubicar los cambios mencionados, o que se consideren importantes **buscando los comentarios** que comienzan por la palabra clave `FRONTEND` de la siguiente forma:
 
 ```js
 //FRONTEND:

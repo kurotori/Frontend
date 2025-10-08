@@ -19,7 +19,7 @@ Esta librería nos permite definir estructuras, comunmente llamadas **_almacenes
 En primer lugar, instalaremos las librerías de _Pinia_ en nuestro proyecto mediante el siguiente comando:
 
 ```sh
-    npm install pinia
+npm install pinia
 ```
 
 [l1]: https://pinia.vuejs.org/

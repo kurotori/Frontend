@@ -9,13 +9,13 @@ import { useAlmacenSesion } from '../store/sesion'
 const almacenNotas = useAlmacenNotas()
 const almacenSesion = useAlmacenSesion()
 
-if ( ! almacenSesion.sesionIniciada) {
-  router.push({name: 'inicioSesion'})
+if (!almacenSesion.sesionIniciada) {
+  router.push({ name: 'inicioSesion' })
 } else {
-  
+
 }
 
-almacenSesion.chequearSesion()
+//almacenSesion.chequearSesion()
 
 almacenNotas.obtenerNotas()
 

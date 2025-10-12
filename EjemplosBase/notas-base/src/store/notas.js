@@ -1,69 +1,68 @@
+import { ref, reactive, computed } from "vue";
 import { defineStore } from "pinia";
 import instanciaAxios from "../services/api";
 
 export const useAlmacenNotas = defineStore(
-  "notas", //Identificador único del almacenamiento
-  {
-    state: () => ({
-      //Estado reactivo del almacen
-      notas: [], //Almacen de las notas
-      loading: false,
-      error: null,
-    }),
-    getters: {
-      //Métodos para obtener elementos del almacen
-      notaPorID: (state) => {
-        return (notaId) => 
-          state.notas.find(
-            (nota) => nota.id === notaId
-          );
-      },
-    },
-    actions: {
-      //Acciones para almacenar elementos, editarlos, eliminarlos, etc.
+  //FRONTEND: Nombre del almacén por el que podremos ubicarlo
+  "notas",
 
-      /**
-       * Permite agregar una Nota al almacen de datos
-       * @param {*} nota
-       */
-      async agregarNota(nota) { //FRONTEND: al agregar axios, los métodos que se comunican con el backend deben volverse 'async'
+  //FRONTEND: Objeto principal del almacén
+  () => {
+    const notas = ref([]);
+    const loading = ref(false);
+    const error = ref(false);
+
+    const notaPorID = (IdNota) => {
+      notas.value.find((nota) => nota.id === IdNota);
+    };
+
+    const agregarNota =
+      //FRONTEND: al agregar axios, los métodos que se comunican con el backend deben volverse 'async'
+      async (nota) => {
+        console.log("hmmm...");
+        loading.value = true;
+        error.value = null;
+
         const nuevaNota = {
           texto: nota.texto,
           titulo: nota.titulo,
         };
 
-        this.loading = true
-        this.error = null
+        console.log(nuevaNota);
         try {
-          const respuesta = 
-            await instanciaAxios.post(
-              'nota/nueva',
-              nuevaNota
-            )
-          alert("El servidor dice: " + respuesta.data.estado + "," + respuesta.data.mensaje)
-          this.obtenerNotas()
+          await instanciaAxios.axiosCSRF.get("");
+          const respuesta = await instanciaAxios.axiosBase.post(
+            "nota/nueva",
+            nuevaNota
+          );
+          alert(
+            "El servidor dice: " +
+              respuesta.data.estado +
+              "," +
+              respuesta.data.mensaje
+          );
+          obtenerNotas();
         } catch (error) {
-          this.error = error
+          error.value = error;
         } finally {
-          this.loading = false
+          loading.value = false;
         }
+      };
 
-      },
+    const obtenerNotas = async () => {
+      loading.value = true;
+      error.value = null;
 
-      async obtenerNotas(){
-        this.loading = true
-        this.error = null
-        try {
-          const respuesta = await instanciaAxios.get('notas')
-          this.notas = respuesta.data.notas
-        } catch (error) {
-          this.error = error          
-        } finally {
-          this.loading = false
-        }
+      try {
+        const respuesta = await instanciaAxios.get("notas");
+        notas.value = respuesta.data.notas;
+      } catch (error) {
+        error.value = error;
+      } finally {
+        loading.value = false;
       }
-    },
+    };
+
+    return { notas, loading, error, obtenerNotas, agregarNota, notaPorID };
   }
 );
-
-

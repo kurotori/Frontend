@@ -16,8 +16,9 @@ import instanciaAxios from "./services/api";
 const pinia = createPinia();
 
 //FRONTEND: PINIA: Le agregamos persistencia a la instancia de Pinia
-pinia.use(piniaPluginPersistedstate); 
-//   IMPORTANTE: PINIA: la instancia de Pinia debe declararse primero
+pinia.use(piniaPluginPersistedstate);
+//   IMPORTANTE: PINIA: la instancia de Pinia debe declararse antes que la instancia de la App
+//      para asegurarnos que esta disponible para su uso.
 
 //FRONTEND: Declaración y configuración de la instancia de la App.
 const app = createApp(App);

@@ -20,6 +20,7 @@ const verCuadrousuario = ref(false)
 
 const agregarNota = () => {
 
+    console.log("agregando....")
     almacenNotas.agregarNota(nuevaNota)
 
     //alert("La nota se guardó con éxito")
@@ -81,8 +82,7 @@ const agregarNota = () => {
           border-b-black border-b-1">
         <h1 class="text-3xl font-bold">Notas</h1>
 
-        <div v-if="almacenSesion.sesionIniciada"
-             class="zonaUsuario
+        <div v-if="almacenSesion.sesionIniciada" class="zonaUsuario
                 h-full w-[30vh]
                 flex justify-between
                 ">
@@ -96,8 +96,7 @@ const agregarNota = () => {
                 </div>
             </label>
 
-            <input type="checkbox" id="controlMenu" 
-                        class="hidden">
+            <input type="checkbox" id="controlMenu" class="hidden">
             <div class="menuUsuario hidden
                     absolute top-[12vh]
                     h-[15vh] w-[30vh]
@@ -138,14 +137,13 @@ const agregarNota = () => {
             </button>
         </div>
 
-        
+
     </div>
+    <button @click="almacenSesion.chequearSesion()">probar</button>
 </template>
 
 <style scoped>
-    #controlMenu:checked + .menuUsuario{
-        display: block;
-    }
-    
-
+#controlMenu:checked+.menuUsuario {
+    display: block;
+}
 </style>
